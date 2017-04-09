@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount: 
+  precision: MyString
+  9,: MyString
+  scale: MyString
+  2: MyString
+  user_1: 1
+  user_2: 1
+  judge: 1
+  terms: MyString
+
+two:
+  amount: 
+  precision: MyString
+  9,: MyString
+  scale: MyString
+  2: MyString
+  user_1: 1
+  user_2: 1
+  judge: 1
+  terms: MyString
