@@ -1,0 +1,16 @@
+<h1>More info</h1>
+<h4>Date:<%=@bet.created_at.strftime("%m/%d/%Y")%></h4>
+<h3>Amount:<%=@bet.amount%></h3>
+<h3><%@bet.wins.each do |win|%></h3>
+      <h3><%if win.win%></h3>
+      <h3>The winner is: <%=win.user.name.capitalize %></h3>
+      <%end%>
+      <%end%>
+<h3>User 1: <%=@bet.first_user.name%></h3>
+<h3>User 2: <%=@bet.second_user.name%></h3>
+<h3>Judge: <%=@bet.master_judge.name%></h3>
+<a href="/">Back to all bets</a>
+<a href="/bets/<%=@bet.id%>/edit">Edit</a>
+<%=form_tag "/bets/#{@bet.id}", method: :delete do %>
+  <input type="submit" value="Delete Bet">
+<%end%>

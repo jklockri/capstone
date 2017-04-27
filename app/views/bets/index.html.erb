@@ -1,0 +1,34 @@
+<div id="app">
+<h1> All bets!</h1>
+number of bets: <%= @bets.count %>
+<%@bets.each do |bet| %> 
+  <h2>Date: <%=bet.created_at.strftime("%m/%d/%Y")%></h2>
+  <h3>Amount: $<%=bet.amount%></h3>
+  <h3><%bet.wins.each do |win|%></h3>
+      <h3><%if win.win%></h3>
+      <h3>The winner is: <%=win.user.name.capitalize %></h3>
+      <%end%>
+  <%end%>
+  <h3>User 1: <%=bet.first_user.name.capitalize%></h3>
+  <h3>User 2: <%=bet.second_user.name.capitalize %></h3>
+  <h3>Judge: <%=bet.master_judge.name.capitalize %></h3>
+  
+  <a href="/bets/<%=bet.id%>">more info</a>
+  <% if current_user == bet.master_judge %>
+    <a href="/bets/<%=bet.id%>?type=judged"> Judge this</a>
+
+
+  <%end%> 
+
+
+  <%end%>
+  
+  <div>
+    <a href="/bets?type=judged">Judge</a>
+  </div>
+  
+<div><a href="/bets?type=involved">Bets you placesd</a></div>
+<div><a href="/bets/new">Place new bet</a>
+</div>
+
+

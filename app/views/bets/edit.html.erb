@@ -1,0 +1,20 @@
+
+<h1>Edit</h1>
+<%= form_tag "/bets/#{@bet.id}", method: :patch do%> 
+<div> 
+Who are you betting?
+<input type="text" name="second_user" value="<%= @bet.second_user.name%>">
+</div>
+<div>
+How much would you like to risk?
+<input type="text" name="amount" value="<%=@bet.amount%>">
+</div>
+<div> Who is your judge?
+<input type="text" name="master_judge" value="<%=@bet.master_judge.name%>">
+</div>
+<div> What are the terms of your bet?
+<input type="text" name="terms" value="<%=@bet.terms%>">
+</div>
+<input type="submit" name="submit">
+
+<%end%>

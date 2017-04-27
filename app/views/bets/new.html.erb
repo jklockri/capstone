@@ -1,0 +1,17 @@
+<%= form_tag "/bets", method: :post do%> 
+<div> Who are you betting?
+<input type="text" name="second_user">
+</div>
+<div>
+How much would you like to risk?
+<input type="text" name="amount">
+</div>
+<div> Who is your judge?
+<input type="text" name="master_judge">
+</div>
+<div> What are the terms of your bet?
+<input type="text" name="terms">
+</div>
+<input type="submit" name="submit">
+
+<%end%>
