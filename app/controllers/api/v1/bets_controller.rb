@@ -1,7 +1,33 @@
 class Api::V1::BetsController < ApplicationController
 
   def index
-    @bets=Bet.all
+    @user = current_user.id
+    @bets = []
+    gon.current_user=current_user
+    
+    if ((Bet.where(user_1: @user)) && Bet.where(user_1: @user) != nil)
+      @bet1 = Bet.where(user_1: @user).to_a
+      @bets << @bet1
+    end
+    if ((Bet.where(user_2: @user)) && Bet.where(user_2: @user) != nil)
+      @bet2 = Bet.where(user_2: @user).to_a
+      @bets << @bet2
+    end
+    if ((Bet.where(judge: @user)) && Bet.where(judge: @user) != nil)
+      @bet3 = Bet.where(judge: @user).to_a
+      @bets << @bet3
+    end
+    @bets=@bets.flatten
+    if params[:type] == "judged"
+      @bets = Bet.where(judge: @user)
+    elsif params[:type]=="involved"
+      @bets=[]
+      @bets<<@bet1
+      @bets<<@bet2
+      
+      return @bets=@bets.flatten
+    end
+    
     render "index.json.jbuilder"  
   end 
 

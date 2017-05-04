@@ -19,4 +19,5 @@ class UsersController < ApplicationController
       redirect_to '/signup'
     end
   end
+
 end
