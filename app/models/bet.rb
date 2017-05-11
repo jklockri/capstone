@@ -5,5 +5,18 @@ class Bet < ApplicationRecord
   has_many :wins
 
 
+  def total
+    total=0
+    bets.each do |bet|
+      bet.amount += total 
+    end 
+    return total 
+  end
+
+
+  def number 
+    return 4
+  end  
+
 
 end

@@ -26,6 +26,10 @@ Rails.application.routes.draw do
   post "/login" => "sessions#create"
   get "/logout" => "sessions#destroy"
 
-  get "/judge/new"=> "wins#new"
-  post "judge/:id" => "wins#create"
+  get "/judge/:id"=> "wins#new"
+  post "/judge/:id" => "wins#create"
+
+
+  get "/calendar" => "bets#calendar"
+  get "/timeline" => "bets#timeline"
 end

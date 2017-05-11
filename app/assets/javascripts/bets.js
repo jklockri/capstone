@@ -1,6 +1,11 @@
 /* global Vue,$, gon*/
 
 document.addEventListener("DOMContentLoaded", function(event) { 
+  // var app0 = new Vue({
+  //   el: '#app0',
+  //   data: {}
+  // });
+
   var app = new Vue({
     el: '#app',
     data: {

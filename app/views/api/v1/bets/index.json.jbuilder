@@ -12,7 +12,7 @@ json.array! @bets.each do |bet|
     json.name win.user.name
 
   end
-  
+
 end 
 
 

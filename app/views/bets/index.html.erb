@@ -1,39 +1,153 @@
-<div id="app">
 
-<div>
-    Search by amount: <input type="text" v-model="amountFilter">
-    Search by First User: <input type="text" v-model="firstUserFilter">
-    Search by Second User: <input type="text" v-model="secondUserFilter">
-    Search by Judge: <input type="text" v-model="judgeFilter">
-    <button v-on:click="showJudge()">Judge</button>
+
+<div class="content-page">
+  <!-- Start content -->
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="page-title-box">
+            
+            <h4 class="page-title">Welcome <%=current_user.name.capitalize%></h4>
+           
+            <ol class="breadcrumb p-0 m-0">
+              <li>
+                <a href="#">Codefox</a>
+              </li>
+              <!--<li>-->
+              <!--<a href="#">Dashboard</a>-->
+              <!--</li>-->
+              <li class="active">
+                Dashboard
+              </li>
+            </ol>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+      <!-- end row -->
+
+      <div class="row">
+
+        <div class="col-lg-3 col-md-6">
+          <div class="card-box widget-box-two widget-two-purple">
+            <i class="mdi mdi-chart-line widget-two-icon"></i>
+            <div class="wigdet-two-content">
+              <p class="m-0 text-uppercase text-white font-600 font-secondary text-overflow" title="Statistics">Profit</p>
+              <h2 class="text-white"><span data-plugin="counterup">55</span> <small><i class="mdi mdi-arrow-up text-white"></i></small></h2>
+              <p class="text-white m-0"><b>10%</b> From previous period</p>
+            </div>
+          </div>
+        </div><!-- end col -->
+
+        <div class="col-lg-3 col-md-6">
+          <div class="card-box widget-box-two widget-two-info">
+            <i class="mdi mdi-access-point-network widget-two-icon"></i>
+            <div class="wigdet-two-content">
+              <p class="m-0 text-white text-uppercase font-600 font-secondary text-overflow" title="User Today">Total Bets</p>
+              <h2 class="text-white"><span data-plugin="counterup"><%=@bets.length%></span> <small><i class="mdi mdi-arrow-up text-white"></i></small></h2>
+            </div>
+          </div>
+        </div><!-- end col -->
+
+        <div class="col-lg-3 col-md-6">
+          <div class="card-box widget-box-two widget-two-pink">
+            <i class="mdi mdi-timetable widget-two-icon"></i>
+            <div class="wigdet-two-content">
+              <p class="m-0 text-uppercase text-white font-600 font-secondary text-overflow" title="Request Per Minute">Player Rating</p>
+              <h2 class="text-white"><span data-plugin="counterup">2365</span> <small><i class="mdi mdi-arrow-up text-white"></i></small></h2>
+              <p class="text-white m-0"><b>7.02%</b> From previous period</p>
+            </div>
+          </div>
+        </div><!-- end col -->
+
+        <div class="col-lg-3 col-md-6">
+          <div class="card-box widget-box-two widget-two-success">
+            <i class="mdi mdi-cloud-download widget-two-icon"></i>
+            <div class="wigdet-two-content">
+              <p class="m-0 text-white text-uppercase font-600 font-secondary text-overflow" title="New Downloads">Judge Rating</p>
+              <h2 class="text-white"><span data-plugin="counterup">854</span> <small><i class="mdi mdi-arrow-up text-white"></i></small></h2>
+              <p class="text-white m-0"><b>9.9%</b> From previous period</p>
+            </div>
+          </div>
+        </div><!-- end col -->
+
+      </div>
+      <!-- end row -->
+
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card-box">
+            <h4 class="header-title m-t-0 m-b-30">Total Revenue share</h4>
+            <div>
+              <div id="combine-chart" class="ct-chart ct-golden-section dash-chart"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="card-box">
+            <h4 class="header-title m-t-0 m-b-30">Total Revenue share</h4>
+            <div class="">
+              <div id="roated-chart" class="ct-chart ct-golden-section dash-chart"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="card-box">
+            <h4 class="header-title m-t-0 m-b-30">Last 30 days statistics</h4>
+
+            <div class="">
+              <div id="donut-chart" class="ct-chart ct-golden-section dash-chart"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end row -->
+
+
+
+
+        </div>
+        <!-- end col -->
+
+      </div>
+      <!-- end row -->
+
+      <div id="app">
+      <table class="table table-striped add-edit-table table-bordered" id="datatable-editable">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>First user</th>
+            <th>Second User</th>
+            <th>Judge</th>
+            <th>Winner</th>
+            <th>Judge this</th>
+          </tr>
+        </thead>
+        <tbody v-for="bet in modifiedBets">
+          <tr class="gradeX">
+
+            <td>{{bet.created_at}}</td>
+            <td>{{bet.first_user.name}}</td>
+            <td>{{bet.second_user.name}}</td>
+            <td>{{bet.master_judge.name}}</td>
+            <td><span class="label label-info" v-for="win in bet.wins" v-if="win.win">
+              {{win.name}}
+            </span></td>
+            <td class="actions">
+              <a v-bind:href="'/judge/' + bet.id" class="on-default edit-row" v-if="currentUser.id == bet.master_judge.id" ><i v-if="bet.wins.win == null" class="fa fa-pencil"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+    </div> <!-- container -->
+
+  </div> <!-- content -->
+
 </div>
 
-  <h4> number of bets:{{bets.length}}</h4>
-
-
-  <div v-for= "bet in modifiedBets">
-   <h1> First user:{{bet.first_user.name}}</h1>
-   <h3> Second user: {{bet.second_user.name}}</h3>
-   <h3> Judge: {{bet.master_judge.name}}</h3>
-   <h4> Amount: {{bet.amount}}</h4>
-   <h4> Date: {{bet.created_at}}</h4>
-   <div v-for="win in bet.wins">
-       <div> <h4 v-if="win.win">Winner: {{win.name}}</h4></div>
-    </div>
-    <a v-bind:href="'/bets/' + bet.id ">more info</a>
-
-
-    <div v-if="currentUser.id == bet.master_judge.id">
-      <a href="'/judge/new">Judge this</a>
-    </div>
-
-
-
-    <div> </div>
-    <div> </div>
- </div>
- <!-- <a href="/bets?type=judged">Judge</a> -->
- <!-- <div><a href="/bets?type=involved">Bets you placesd</a></div> -->
- <div><a href="/bets/new">Place new bet</a></div>
- </div>
-</div>
