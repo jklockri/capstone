@@ -28,11 +28,16 @@ class BetsController < ApplicationController
       @bets<<@bet1
       @bets<<@bet2
     end
-    @bets_total = @bets.inject(0) {|sum, bet| sum + bet.amount }
-    return @bets = @bets.flatten
-   
-   
 
+
+    @bets_total = @bets.inject(0) {|sum, bet|
+        if bet.wins
+          sum + bet.amount
+        else 
+          sum - bet.amout 
+
+        end}
+    return @bets = @bets.flatten
     
     render "index.html.erb"
   end 
