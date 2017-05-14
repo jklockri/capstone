@@ -9,9 +9,6 @@
 <h3>User 1: <%=@bet.first_user.name%></h3>
 <h3>User 2: <%=@bet.second_user.name%></h3>
 <h3>Judge: <%=@bet.master_judge.name%></h3>
-<div v-if= "currentUser === bet.master_judge">
-  <p>something</p>
-</div>
 <a href="/">Back to all bets</a>
 <a href="/bets/<%=@bet.id%>/edit">Edit</a>
 <%=form_tag "/bets/#{@bet.id}", method: :delete do %>

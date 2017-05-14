@@ -31,9 +31,8 @@
 
         <script src="/assets/js/modernizr.min.js"></script>
 
-
-    <%= stylesheet_link_tag    'application', media: 'all'%>
-    <%= javascript_include_tag 'application'%>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
      <%= Gon::Base.render_data%>
   </head>
 
@@ -227,6 +226,7 @@
 
                             <li><a href="/calendar"><i class="fi-clock"></i> <span>Calendar</span> </a></li>
                             <li><a href="/timeline"><i class="fa-history"></i> <span>Timeline</span> </a></li>
+
 
                             <li>
                                 <a href="javascript: void(0);" aria-expanded="true"><i class="fi-map"></i> <span> Maps </span> <span class="menu-arrow"></span></a>

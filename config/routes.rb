@@ -10,7 +10,8 @@ Rails.application.routes.draw do
     end 
   end
 
-  get "/" => "bets#index"
+  get "/" => "sessions#new"
+
   get "/bets" => 'bets#index'
   get '/bets/new' => 'bets#new'
   post '/bets' => 'bets#create'

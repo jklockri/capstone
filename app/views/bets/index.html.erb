@@ -34,7 +34,7 @@
             <i class="mdi mdi-chart-line widget-two-icon"></i>
             <div class="wigdet-two-content">
               <p class="m-0 text-uppercase text-white font-600 font-secondary text-overflow" title="Statistics">Profit</p>
-              <h2 class="text-white"><span data-plugin="counterup">55</span> <small><i class="mdi mdi-arrow-up text-white"></i></small></h2>
+              <h2 class="text-white"><span data-plugin="counterup"><%=@bets_total%></span> <small><i class="mdi mdi-arrow-up text-white"></i></small></h2>
               <p class="text-white m-0"><b>10%</b> From previous period</p>
             </div>
           </div>
@@ -114,8 +114,11 @@
 
       </div>
       <!-- end row -->
+      <div>
+      <h3>Recent Bets</h3>
+      </div>
 
-      <div id="app">
+      <div id="app" class="col-lg-12" >
       <table class="table table-striped add-edit-table table-bordered" id="datatable-editable">
         <thead>
           <tr>
@@ -136,9 +139,10 @@
             <td>{{bet.master_judge.name}}</td>
             <td><span class="label label-info" v-for="win in bet.wins" v-if="win.win">
               {{win.name}}
+
             </span></td>
             <td class="actions">
-              <a v-bind:href="'/judge/' + bet.id" class="on-default edit-row" v-if="currentUser.id == bet.master_judge.id" ><i v-if="bet.wins.win == null" class="fa fa-pencil"></i></a>
+              <a v-bind:href="'/judge/' + bet.id" class="on-default edit-row" v-if="currentUser.id == bet.master_judge.id && !bet.wins[0]" ><i class="fa fa-pencil"></i></a>
             </td>
           </tr>
         </tbody>
