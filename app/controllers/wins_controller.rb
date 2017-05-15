@@ -24,6 +24,6 @@ class WinsController < ApplicationController
       user_id: lost,
       win: false)
     loser.save
-    redirect_to '/'
+    redirect_to '/bets'
   end 
 end

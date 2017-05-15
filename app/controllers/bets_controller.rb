@@ -29,14 +29,21 @@ class BetsController < ApplicationController
       @bets<<@bet2
     end
 
+    
+    @bets_total = 0
+    @bets.each do |bet|
+      bet.wins.each do |win|
+        if win.user_id == current_user.id
+          if win.win == true
+            @bets_total += bet.amount
+          else win.win == false 
+            @bets_total -= bet.amount 
+          end
+        end
+      end
+    end
+    
 
-    @bets_total = @bets.inject(0) {|sum, bet|
-        if bet.wins
-          sum + bet.amount
-        else 
-          sum - bet.amout 
-
-        end}
     return @bets = @bets.flatten
     
     render "index.html.erb"
@@ -87,7 +94,7 @@ class BetsController < ApplicationController
   def destroy
     @bet= Bet.find_by(id: params[:id])
     @bet.destroy
-    redirect_to "/"
+    redirect_to "/bets"
   end 
 
   def calendar 
@@ -121,6 +128,10 @@ class BetsController < ApplicationController
     end
     @bets = @bets.flatten
     render "timeline.html.erb"
+  end
+
+  def points 
+    render "points.html.erb"
   end
 
 end

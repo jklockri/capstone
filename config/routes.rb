@@ -33,4 +33,7 @@ Rails.application.routes.draw do
 
   get "/calendar" => "bets#calendar"
   get "/timeline" => "bets#timeline"
+  get "/points" => "bets#points"
+
+  get "/rateplayer" => "ratings#new"
 end

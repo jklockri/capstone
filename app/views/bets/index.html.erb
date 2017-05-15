@@ -34,8 +34,8 @@
             <i class="mdi mdi-chart-line widget-two-icon"></i>
             <div class="wigdet-two-content">
               <p class="m-0 text-uppercase text-white font-600 font-secondary text-overflow" title="Statistics">Profit</p>
-              <h2 class="text-white"><span data-plugin="counterup"><%=@bets_total%></span> <small><i class="mdi mdi-arrow-up text-white"></i></small></h2>
-              <p class="text-white m-0"><b>10%</b> From previous period</p>
+              <h2 class="text-white"><span data-plugin="counterup"><%=@bets_total%></span> <small><i class="mdi sm-arrow-up text-white"></i></small></h2>
+             
             </div>
           </div>
         </div><!-- end col -->
@@ -56,7 +56,6 @@
             <div class="wigdet-two-content">
               <p class="m-0 text-uppercase text-white font-600 font-secondary text-overflow" title="Request Per Minute">Player Rating</p>
               <h2 class="text-white"><span data-plugin="counterup">2365</span> <small><i class="mdi mdi-arrow-up text-white"></i></small></h2>
-              <p class="text-white m-0"><b>7.02%</b> From previous period</p>
             </div>
           </div>
         </div><!-- end col -->
@@ -67,7 +66,6 @@
             <div class="wigdet-two-content">
               <p class="m-0 text-white text-uppercase font-600 font-secondary text-overflow" title="New Downloads">Judge Rating</p>
               <h2 class="text-white"><span data-plugin="counterup">854</span> <small><i class="mdi mdi-arrow-up text-white"></i></small></h2>
-              <p class="text-white m-0"><b>9.9%</b> From previous period</p>
             </div>
           </div>
         </div><!-- end col -->
@@ -104,6 +102,7 @@
           </div>
         </div>
       </div>
+
       <!-- end row -->
 
 
@@ -128,6 +127,8 @@
             <th>Judge</th>
             <th>Winner</th>
             <th>Judge this</th>
+            <th>Rate Judge</th>
+            <th>Rate Other Player</th>
           </tr>
         </thead>
         <tbody v-for="bet in modifiedBets">
@@ -144,6 +145,8 @@
             <td class="actions">
               <a v-bind:href="'/judge/' + bet.id" class="on-default edit-row" v-if="currentUser.id == bet.master_judge.id && !bet.wins[0]" ><i class="fa fa-pencil"></i></a>
             </td>
+            <td><a href="/ratejudge" v-if="currentUser.id !== bet.master_judge.id"><i class="fa fa-pencil"></i></a></td>
+            <td><a href="/rateplayer"><i class="fa fa-pencil"></i></a></td>
           </tr>
         </tbody>
       </table>
@@ -154,4 +157,8 @@
   </div> <!-- content -->
 
 </div>
+
+
+
+
 

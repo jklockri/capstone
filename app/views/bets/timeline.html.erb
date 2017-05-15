@@ -38,19 +38,22 @@
                                                 </div>
                                             </div>
                                         </article>
+                                        <% @bets.each do |bet| %>
                                         <article class="timeline-item alt">
                                             <div class="timeline-desk">
                                                 <div class="panel">
                                                     <div class="timeline-box">
                                                         <span class="arrow-alt"></span>
                                                         <span class="timeline-icon"><i class="mdi mdi-checkbox-blank-circle-outline"></i></span>
-                                                        <h4 class="">1 hour ago</h4>
+                                                        <h4 class=""><%=bet.created_at%></h4>
                                                         <p class="timeline-date text-muted"><small></small></p>
-                                                        <p><%@bets[3].terms%></p>
+                                                        <p><%=bet.terms%></p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </article>
+
+                                        <%end%>
                                         <article class="timeline-item ">
                                             <div class="timeline-desk">
                                                 <div class="panel">

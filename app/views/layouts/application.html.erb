@@ -17,6 +17,9 @@
         <!-- C3 charts css -->
         <link href="/plugins/c3/c3.min.css" rel="stylesheet" type="text/css"  />
 
+        <!-- Load d3.js and c3.js -->
+       
+
         <!-- App css -->
         <link href="/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" />
         <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -74,15 +77,22 @@
                          
                         </ul>
 
+                        
+                         <!-- <button type="button" class="btn btn-primary btn-rounded btn-bordered waves-effect w-md waves-light"> Something</button> -->
+                        
+
+
+
                         <!-- Right(Notification) -->
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="hidden-xs">
-                                <form role="search" class="app-search">
-                                    <input type="text" placeholder="Search..."
-                                           class="form-control">
+                            <!-- <li class="hidden-xs">
+                                <form role="button">
+                                    <button class="form-control">
                                     <a href=""><i class="fa fa-search"></i></a>
+                                  <a href="/bets/new">Place a new bet</a></button>
                                 </form>
-                            </li>
+                            </li> -->
+                            <li><a class="btn btn-default" href="/bets/new">Place a new bet</a></li>
                             <li>
                                 <a href="#" class="right-menu-item dropdown-toggle" data-toggle="dropdown">
                                     <i class="dripicons-bell"></i>
@@ -188,7 +198,7 @@
                             </li>
 
                             <li class="dropdown user-box">
-                                <a href="" class="dropdown-toggle waves-effect user-link" data-toggle="dropdown" aria-expanded="true">
+                                <a href="" class="dropdown-toggle waves-effect user-link" data-toggle="dropdown" aria-expanded= "true">
                                     <img src="assets/images/users/avatar-1.jpg" alt="user-img" class="img-circle user-img">
                                 </a>
 
@@ -226,7 +236,7 @@
 
                             <li><a href="/calendar"><i class="fi-clock"></i> <span>Calendar</span> </a></li>
                             <li><a href="/timeline"><i class="fa-history"></i> <span>Timeline</span> </a></li>
-
+                            <li><a href="/points"><i class="fa-animal"></i> <span>Points</span> </a></li>
 
                             <li>
                                 <a href="javascript: void(0);" aria-expanded="true"><i class="fi-map"></i> <span> Maps </span> <span class="menu-arrow"></span></a>
