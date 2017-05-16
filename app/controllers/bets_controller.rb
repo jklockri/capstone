@@ -43,7 +43,7 @@ class BetsController < ApplicationController
         end
       end
     end
-    @ratings_total= @ratings.inject(0){|sum,rating| sum += rating}
+    @total_judge_rating= @ratings.inject(0){|sum,rating| sum += rating.judge_rating}
     
 
     return @bets = @bets.flatten
