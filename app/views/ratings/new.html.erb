@@ -1,1 +1,67 @@
-new.html.erb
+<div class="content-page">
+  <!-- Start content -->
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="page-title-box">
+            <h4 class="page-title">Rate</h4>
+            <ol class="breadcrumb p-0 m-0">
+              <li>
+                <a href="#">Codefox</a>
+              </li>
+              <li>
+                <a href="#">Pages</a>
+              </li>
+              <li class="active">
+                Starter Page
+              </li>
+            </ol>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+      <!-- end row -->
+
+      <div class="row">
+        <div class="col-sm-12">
+
+         <div class="row">
+          <div class="col-md-6">
+
+            <div class="card-box">
+            <h4 class="header-title m-t-0 m-b-20">Rate <%=@message%></h4>
+
+
+
+              <%=form_tag "/rate/#{@bet.id}", method: :post do %>
+              <select class="form-control select2" name="rating" >
+
+                <option >1</option>
+                <option >2</option>
+                <option >3</option>
+                <option >4</option>
+                <option >5</option>
+                <option >6</option>
+                <option >7</option>
+                <option >8</option>
+                <option >9</option>
+                <option >10</option>
+
+              </select>
+              <input type="hidden" name="job" value="<%=params[:type]%>">
+
+
+
+              <input type="submit" name="Submit">
+              <%end%>
+              <!-- end row -->
+
+
+            </div> <!-- container -->
+
+          </div> <!-- content -->
+
+
+
+        </div>

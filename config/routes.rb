@@ -35,5 +35,6 @@ Rails.application.routes.draw do
   get "/timeline" => "bets#timeline"
   get "/points" => "bets#points"
 
-  get "/rateplayer" => "ratings#new"
+  get "/rate/:id" => "ratings#new"
+  post "/rate/:id" => "ratings#create"
 end

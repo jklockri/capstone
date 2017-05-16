@@ -4,13 +4,4 @@ class Bet < ApplicationRecord
   belongs_to :master_judge, class_name: "User", foreign_key: "judge", optional: true
   has_many :wins
 
-
- 
-
-
-  def number 
-    4
-  end  
-
-
 end

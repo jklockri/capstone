@@ -7,9 +7,9 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="page-title-box">
-            
+
             <h4 class="page-title">Welcome <%=current_user.name.capitalize%></h4>
-           
+
             <ol class="breadcrumb p-0 m-0">
               <li>
                 <a href="#">Codefox</a>
@@ -30,12 +30,12 @@
       <div class="row">
 
         <div class="col-lg-3 col-md-6">
-          <div class="card-box widget-box-two widget-two-purple">
+          <div class="card-box widget-box-two widget-two-success">
             <i class="mdi mdi-chart-line widget-two-icon"></i>
             <div class="wigdet-two-content">
               <p class="m-0 text-uppercase text-white font-600 font-secondary text-overflow" title="Statistics">Profit</p>
               <h2 class="text-white"><span data-plugin="counterup"><%=@bets_total%></span> <small><i class="mdi sm-arrow-up text-white"></i></small></h2>
-             
+
             </div>
           </div>
         </div><!-- end col -->
@@ -55,7 +55,7 @@
             <i class="mdi mdi-timetable widget-two-icon"></i>
             <div class="wigdet-two-content">
               <p class="m-0 text-uppercase text-white font-600 font-secondary text-overflow" title="Request Per Minute">Player Rating</p>
-              <h2 class="text-white"><span data-plugin="counterup">2365</span> <small><i class="mdi mdi-arrow-up text-white"></i></small></h2>
+              <h2 class="text-white"><span data-plugin="counterup">3333</span> <small><i class="mdi mdi-arrow-up text-white"></i></small></h2>
             </div>
           </div>
         </div><!-- end col -->
@@ -76,25 +76,41 @@
       <div class="row">
         <div class="col-lg-4">
           <div class="card-box">
-            <h4 class="header-title m-t-0 m-b-30">Total Revenue share</h4>
+            <h4 class="header-title m-t-0 m-b-30">Profit against players (Bar)</h4>
             <div>
               <div id="combine-chart" class="ct-chart ct-golden-section dash-chart"></div>
             </div>
           </div>
         </div>
 
+
         <div class="col-lg-4">
           <div class="card-box">
-            <h4 class="header-title m-t-0 m-b-30">Total Revenue share</h4>
+            <h4 class="header-title m-t-0 m-b-30">Bets Last Month (donut) </h4>
+
+            <div class="">
+              <div id="donut-chart" class="ct-chart ct-golden-section dash-chart"></div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-lg-4">
+          <div class="card-box">
+            <h4 class="header-title m-t-0 m-b-30">Total profit per month (Bar)</h4>
             <div class="">
               <div id="roated-chart" class="ct-chart ct-golden-section dash-chart"></div>
             </div>
           </div>
         </div>
 
+
+      </div>
+
+      <div class="row">
         <div class="col-lg-4">
           <div class="card-box">
-            <h4 class="header-title m-t-0 m-b-30">Last 30 days statistics</h4>
+            <h4 class="header-title m-t-0 m-b-30">Bets Last Month (donut) </h4>
 
             <div class="">
               <div id="donut-chart" class="ct-chart ct-golden-section dash-chart"></div>
@@ -102,59 +118,58 @@
           </div>
         </div>
       </div>
-
       <!-- end row -->
 
 
 
 
-        </div>
-        <!-- end col -->
+    </div>
+    <!-- end col -->
 
-      </div>
-      <!-- end row -->
-      <div>
-      <h3>Recent Bets</h3>
-      </div>
+  </div>
+  <!-- end row -->
+  <div>
+    <h3>Recent Bets</h3>
+  </div>
 
-      <div id="app" class="col-lg-12" >
-      <table class="table table-striped add-edit-table table-bordered" id="datatable-editable">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>First user</th>
-            <th>Second User</th>
-            <th>Judge</th>
-            <th>Winner</th>
-            <th>Judge this</th>
-            <th>Rate Judge</th>
-            <th>Rate Other Player</th>
-          </tr>
-        </thead>
-        <tbody v-for="bet in modifiedBets">
-          <tr class="gradeX">
+  <div id="app" class="col-lg-12" >
+    <table class="table table-striped add-edit-table table-bordered" id="datatable-editable">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>First user</th>
+          <th>Second User</th>
+          <th>Judge</th>
+          <th>Winner</th>
+          <th>Judge this</th>
+          <th>Rate Judge</th>
+          <th>Rate Other Player</th>
+        </tr>
+      </thead>
+      <tbody v-for="bet in modifiedBets">
+        <tr class="gradeX">
 
-            <td>{{bet.created_at}}</td>
-            <td>{{bet.first_user.name}}</td>
-            <td>{{bet.second_user.name}}</td>
-            <td>{{bet.master_judge.name}}</td>
-            <td><span class="label label-info" v-for="win in bet.wins" v-if="win.win">
-              {{win.name}}
+          <td>{{bet.created_at}}</td>
+          <td>{{bet.first_user.name}}</td>
+          <td>{{bet.second_user.name}}</td>
+          <td>{{bet.master_judge.name}}</td>
+          <td><span class="label label-info" v-for="win in bet.wins" v-if="win.win">
+            {{win.name}}
 
-            </span></td>
-            <td class="actions">
-              <a v-bind:href="'/judge/' + bet.id" class="on-default edit-row" v-if="currentUser.id == bet.master_judge.id && !bet.wins[0]" ><i class="fa fa-pencil"></i></a>
-            </td>
-            <td><a href="/ratejudge" v-if="currentUser.id !== bet.master_judge.id"><i class="fa fa-pencil"></i></a></td>
-            <td><a href="/rateplayer"><i class="fa fa-pencil"></i></a></td>
-          </tr>
-        </tbody>
-      </table>
-      </div>
+          </span></td>
+          <td class="actions">
+            <a v-bind:href="'/judge/' + bet.id" class="on-default edit-row" v-if="currentUser.id == bet.master_judge.id && !bet.wins[0]" ><i class="fa fa-pencil"></i></a>
+          </td>
+          <td><a v-bind:href="'/rate/' + bet.id + '?type=judge'" v-if="currentUser.id !== bet.master_judge.id"><i class="fa fa-pencil"></i></a></td>
+          <td><a v-bind:href="'/rate/' + bet.id + '?type=player'"><i class="fa fa-pencil"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-    </div> <!-- container -->
+</div> <!-- container -->
 
-  </div> <!-- content -->
+</div> <!-- content -->
 
 </div>
 

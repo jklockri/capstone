@@ -3,6 +3,7 @@ class BetsController < ApplicationController
 
   def index
     gon.current_user=current_user
+    @ratings= Rating.where("user_id=?", current_user.id)
 
     @user = current_user.id
     @bets = []
@@ -42,6 +43,7 @@ class BetsController < ApplicationController
         end
       end
     end
+    @ratings_total= @ratings.inject(0){|sum,rating| sum += rating}
     
 
     return @bets = @bets.flatten

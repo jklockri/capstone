@@ -7,7 +7,7 @@ class WinsController < ApplicationController
 
   def create
     bet = Bet.find_by(id: params[:id])
-    puts params[:winner] 
+    
     winner=Win.new(
       bet_id: bet.id,
       user_id: params[:winner],
