@@ -36,6 +36,8 @@ gem 'faker'
 gem 'jquery-rails'
 gem 'gon'
 gem 'simple_calendar'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

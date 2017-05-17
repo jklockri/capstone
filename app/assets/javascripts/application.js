@@ -13,5 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require vue
+//= require moment 
+//= require fullcalendar
 //= require_tree .
+
+
 

@@ -16,7 +16,7 @@
       bindto: '#combine-chart',
       data: {
         columns: [
-          ['Desktop', 30, 20, 50, 40, 60, 50],
+          ['Desktop', 600, 92, 50, 40, 60, 50],
           ['Mobiles', 200, 130, 90, 240, 130, 220],
           ['Tablets', 300, 200, 160, 400, 250, 250],
           ['Android', 200, 130, 90, 240, 130, 220],
@@ -71,6 +71,30 @@
     //Donut Chart
     c3.generate({
       bindto: '#donut-chart',
+      data: {
+        columns: [
+          ['Data1', 46],
+          ['Data2', 24],
+          ['Data3', 48],
+          ['Data4', 18]
+        ],
+        type : 'donut'
+      },
+      donut: {
+        title: "Candidates",
+        width: 40,
+        label: {
+          show:false
+        }
+      },
+      color: {
+        pattern: ["#348cd4", "#eee", "#f7531f","#ff9800"]
+      }
+    });
+
+    //Donut Chart 2
+    c3.generate({
+      bindto: '#donut-chart2',
       data: {
         columns: [
           ['Data1', 46],

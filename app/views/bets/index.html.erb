@@ -34,7 +34,7 @@
             <i class="mdi mdi-chart-line widget-two-icon"></i>
             <div class="wigdet-two-content">
               <p class="m-0 text-uppercase text-white font-600 font-secondary text-overflow" title="Statistics">Profit</p>
-              <h2 class="text-white"><span data-plugin="counterup"><%=@bets_total%></span> <small><i class="mdi sm-arrow-up text-white"></i></small></h2>
+              <h2 class="text-white">$<span data-plugin="counterup"><%=@bets_total%></span> <small><i class="mdi sm-arrow-up text-white"></i></small></h2>
 
             </div>
           </div>
@@ -55,7 +55,7 @@
             <i class="mdi mdi-timetable widget-two-icon"></i>
             <div class="wigdet-two-content">
               <p class="m-0 text-uppercase text-white font-600 font-secondary text-overflow" title="Request Per Minute">Player Rating</p>
-              <h2 class="text-white"><span data-plugin="counterup">3333</span> <small><i class="mdi mdi-arrow-up text-white"></i></small></h2>
+              <h2 class="text-white"><span data-plugin="counterup"><%=@total_player_rating%></span> <small><i class="mdi mdi-arrow-up text-white"></i></small></h2>
             </div>
           </div>
         </div><!-- end col -->
@@ -107,17 +107,7 @@
 
       </div>
 
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="card-box">
-            <h4 class="header-title m-t-0 m-b-30">Bets Last Month (donut) </h4>
 
-            <div class="">
-              <div id="donut-chart" class="ct-chart ct-golden-section dash-chart"></div>
-            </div>
-          </div>
-        </div>
-      </div>
       <!-- end row -->
 
 

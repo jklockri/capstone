@@ -1,9 +1,5 @@
 /* global Vue,$, gon*/
 
-
-
-
-
 document.addEventListener("DOMContentLoaded", function(event) { 
   // var app0 = new Vue({
   //   el: '#app0',
@@ -59,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   });
 });
 
+$('#calendar').fullCalendar({});
 
 
 
