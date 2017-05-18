@@ -1,57 +1,59 @@
 <div class="content-page">
-                <!-- Start content -->
-                <div class="content">
-                    <div class="container">
-                        <div class="row">
-              <div class="col-lg-4">
-                <div class="panel panel-color panel-warning">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Panel Default</h3>
-                  </div>
-                  <div class="panel-body">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                  </div>
-                  <div class="panel-footer">
-                    <button class="btn">Buy now</button>
-                  </div>
+    <!-- Start content -->
+    <div class="content">
+        <div class="container">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="page-title-box">
+                    <h4 class="page-title">Starter Page</h4>
+                    <ol class="breadcrumb p-0 m-0">
+                        <li>
+                            <a href="#">Codefox</a>
+                        </li>
+                        <li>
+                            <a href="#">Pages</a>
+                        </li>
+                        <li class="active">
+                            Starter Page
+                        </li>
+                    </ol>
+                    <div class="clearfix"></div>
                 </div>
-              </div>
+            </div>
+        </div>
+        <!-- end row -->
+        <%=form_tag "/points", method: :post do %>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="">
+                    <form>
+                        <div class="form-group">
+                            <p>How many points would you like?</p>
+                            <input  type="text" name="points" placeholder="10" >
+                        </div>
+                        <div>
+                        <input type="submit" name="submit">
+                        </div>
 
-              <div class="col-lg-4">
-                <div class="panel panel-color panel-primary">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Panel Custom</h3>
-                  </div>
-                  <div class="panel-body">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                  </div>
-                  <div class="panel-footer">
-                    <button>Buy now</button>
-                  </div>
+
+                    </form>
                 </div>
-              </div>
+            </div>
 
-              <div class="col-lg-4">
-                <div class="panel panel-color panel-info">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Panel Primary</h3>
-                  </div>
-                  <div class="panel-body">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                  </div>
-                  <div class="panel-footer">
-                    <button>Buy now</button>
-                  </div>
-                </div>
-              </div>
 
-            </div>
-            </div>
-            </div>
-            </div>
+        </div><!-- end col -->
+        <%end%>
+
+
+        <!-- end row -->
+
+
+    </div> <!-- container -->
+
+</div> <!-- content -->
+
+<footer class="footer text-right">
+    2016 - 2017 © Codefox. - Coderthemes.com
+</footer>
+
+</div>

@@ -15,7 +15,9 @@
     c3.generate({
       bindto: '#combine-chart',
       data: {
+        x: 'x',
         columns: [
+          ['x', "4/22/33","4/22/33","4/22/33","4/22/33","4/22/33"],
           ['Desktop', 600, 92, 50, 40, 60, 50],
           ['Mobiles', 200, 130, 90, 240, 130, 220],
           ['Tablets', 300, 200, 160, 400, 250, 250],
@@ -53,7 +55,8 @@
           ['data2', 50, 20, 10, 40, 15, 25]
         ],
         types: {
-          data1: 'bar'
+          data1: 'bar',
+          data2: 'bar'
         },
         colors: {
           data1: '#1ea69a',

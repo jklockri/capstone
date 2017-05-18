@@ -33,8 +33,12 @@ Rails.application.routes.draw do
 
   get "/calendar" => "bets#calendar"
   get "/timeline" => "bets#timeline"
+  get "/graphs" => "bets#graphs"
+
   get "/points" => "bets#points"
+  post "/points" => "points#create"
 
   get "/rate/:id" => "ratings#new"
   post "/rate/:id" => "ratings#create"
+
 end

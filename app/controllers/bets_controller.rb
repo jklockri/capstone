@@ -138,4 +138,8 @@ class BetsController < ApplicationController
     render "points.html.erb"
   end
 
+  def graphs
+    render "graphs.html.erb"
+  end 
+
 end
