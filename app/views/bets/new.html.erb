@@ -1,51 +1,60 @@
 <div class="content-page">
-                <!-- Start content -->
-                <div class="content">
-                    <div class="container">
-                        <div class="row">
-              <div class="col-xs-12">
-                <div class="page-title-box">
-                                    <h4 class="page-title">New Bet</h4>
-                                    <ol class="breadcrumb p-0 m-0">
-                                        <li>
-                                            <a href="#">Let's Bet</a>
-                                        </li>
-                                        <li class="active">
-                                            New Bet 
-                                        </li>
-                                    </ol>
-                                    <div class="clearfix"></div>
-                                </div>
-              </div>
-            </div>
-                        <!-- end row -->
+  <!-- Start content -->
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="page-title-box">
+            <h4 class="page-title">New Bet</h4>
+            <ol class="breadcrumb p-0 m-0">
+              <li>
+                <a href="#">Let's Bet</a>
+              </li>
+              <li class="active">
+                New Bet 
+              </li>
+            </ol>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+      <!-- end row -->
 
-                        <div class="row">
-                            <div class="col-sm-12">
-                            <%= form_tag "/bets", method: :post do%> 
-                              <div> Who are you betting?
-                              <input type="text" name="second_user">
-                              </div>
-                              <div>
-                              How much would you like to risk?
-                              <input type="text" name="amount">
-                              </div>
-                              <div> Who is your judge?
-                              <input type="text" name="master_judge">
-                              </div>
-                              <div> What are the terms of your bet?
-                              <input type="text" name="terms">
-                              </div>
-                              <input type="submit" name="submit">
+      <div class="row">
+        <div class="col-sm-12">
+          <%= form_tag "/bets", method: :post do%> 
+          <div> Who are you betting?
+            <!-- <input type="text" name="second_user"> -->
+            <select name="second_user">
+              <% User.all.each do |user| %>
+              <option value="<%= user.name %>"><%= user.name if current_user.name != user.name  %></option>
+              <% end %>
+            </select>
+          </div>
+          <div>
+            How many points would you like to risk?
+            <input type="text" name="amount">
+          </div>
+          <div> Who is your judge?
+            <select name="master_judge">
+              <% User.all.each do |user| %>
+              <option value="<%= user.name %>"><%= user.name if current_user.name != user.name  %></option>
+              <% end %>
+            </select>
+          </div>
+          <div> What are the terms of your bet?
+            <input type="text" name="terms">
+          </div>
+          <input type="submit" name="submit">
 
-                              <%end%>
-                            </div><!-- end col -->
-                        </div>
-                        <!-- end row -->
+          <%end%>
+        </div><!-- end col -->
+      </div>
+      <!-- end row -->
 
 
-                    </div> <!-- container -->
+    </div> <!-- container -->
 
-                </div> <!-- content -->
+  </div> <!-- content -->
 
 

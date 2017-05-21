@@ -5,8 +5,11 @@ Rails.application.routes.draw do
       get "/" => "bets#index"
       get "/bets" => 'bets#index'
       post '/bets' => 'bets#create'
+      get '/bets/:id' => 'bets#show'
       patch '/bets/:id' => 'bets#update'
       delete 'bets/:id' => 'bets#destroy'
+      get '/total_profit_graph' => 'bets#total_profit_graph' 
+      get '/events' => 'bets#events'
     end 
   end
 

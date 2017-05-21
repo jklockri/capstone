@@ -1,4 +1,4 @@
- <div id="calendar"></div>
+
 
 <div class="content-page">
     <!-- Start content -->
@@ -26,10 +26,14 @@
             <!-- end row -->
 
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-lg-12">
 
+                    <div class="card-box">
+                    <div id="calendar">
 
-                </div><!-- end col -->
+                        </div>
+                    </div><!-- end col -->
+                </div>
             </div>
             <!-- end row -->
 
@@ -43,3 +47,9 @@
     </footer>
 
 </div>
+<script type="text/javascript">
+    $('#calendar').fullCalendar({
+        events: "/api/v1/events.json"
+    });
+    </script>
+

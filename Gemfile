@@ -38,6 +38,7 @@ gem 'gon'
 gem 'simple_calendar'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem "chartkick"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

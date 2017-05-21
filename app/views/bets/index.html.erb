@@ -27,15 +27,18 @@
       </div>
       <!-- end row -->
       <div class ="row">
-      <div class="col-lg-4">
+      <div class="col-md-4">
       <a class="btn btn-info btn-lg btn-block" href="/bets/new">Place a new bet</a>
         </div>
-        <div class="col-lg-4">
+
+        <div class="col-md-4">
         <a class="btn btn-info btn-lg btn-block" href="/points">Buy points</a>
         </div>
-         <div class="col-lg-4">
+
+         <div class="col-md-4">
         <a class="btn btn-info btn-lg btn-block" href="/graphs">Check out some graphs</a>
         </div>
+
       </div>
       <br>
 
@@ -45,8 +48,8 @@
           <div class="card-box widget-box-two widget-two-danger">
             <i class="mdi mdi-chart-line widget-two-icon"></i>
             <div class="wigdet-two-content">
-              <p class="m-0 text-uppercase text-white font-600 font-secondary text-overflow" title="Statistics">Profit</p>
-              <h2 class="text-white">$<span data-plugin="counterup"><%=@bets_total%></span> <small><i class="mdi sm-arrow-up text-white"></i></small></h2>
+              <p class="m-0 text-uppercase text-white font-600 font-secondary text-overflow" title="Statistics">Total Points</p>
+              <h2 class="text-white">$<span data-plugin="counterup"><%=@total_points%></span> <small><i class="mdi sm-arrow-up text-white"></i></small></h2>
 
             </div>
           </div>
@@ -121,8 +124,8 @@
           <td class="actions">
             <a v-bind:href="'/judge/' + bet.id" class="on-default edit-row" v-if="currentUser.id == bet.master_judge.id && !bet.wins[0]" ><i class="fa fa-pencil"></i></a>
           </td>
-          <td><a v-bind:href="'/rate/' + bet.id + '?type=judge'" v-if="currentUser.id !== bet.master_judge.id"><i class="fa fa-pencil"></i></a></td>
-          <td><a v-bind:href="'/rate/' + bet.id + '?type=player'"><i class="fa fa-pencil"></i></a></td>
+          <td><a  class = "btn btn-danger btn-sm" v-bind:href="'/rate/' + bet.id + '?type=judge'" v-if="currentUser.id !== bet.master_judge.id">Rate Judge</a></td>
+          <td><a class ="btn btn-warning btn-sm" v-bind:href="'/rate/' + bet.id + '?type=player'">Rate Player</a></td>
         </tr>
       </tbody>
     </table>

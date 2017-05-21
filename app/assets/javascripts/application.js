@@ -12,10 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require vue
 //= require moment 
 //= require fullcalendar
+//= require vue
+//= require Chart.bundle
+//= require chartkick
 //= require_tree .
+
+
+
 
 
 
