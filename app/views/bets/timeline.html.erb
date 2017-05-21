@@ -1,4 +1,4 @@
-            
+
 <div class="content-page">
     <!-- Start content -->
     <div class="content">
@@ -42,7 +42,7 @@
                                     <div class="timeline-box">
                                         <span class="arrow-alt"></span>
                                         <span class="timeline-icon"><i class="mdi mdi-checkbox-blank-circle-outline"></i></span>
-                                        <h4 class=""><%=bet.created_at%></h4>
+                                        <h4 class=""><%=bet.created_at.strftime("%m/%d/%Y")%></h4>
                                         <p class="timeline-date text-muted"><small></small></p>
                                         <p><%=bet.terms%></p>
                                     </div>

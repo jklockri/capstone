@@ -7,7 +7,7 @@ class WinsController < ApplicationController
 
   def create
     bet = Bet.find_by(id: params[:id])
-  
+
     
     winner=Win.new(
       bet_id: bet.id,
@@ -17,8 +17,16 @@ class WinsController < ApplicationController
     winner.save
     if params[:winner]==bet.first_user.id
       lost=bet.second_user.id
+      
+      winner_point=Point.find_by("user_id=?", bet.first_user.id)
+      winner_point.total_points=winner_point.total_points + bet.amount.to_i * 2
+      winner_point.save
     else 
       lost=bet.first_user.id
+      
+      winner_point=Point.find_by("user_id=?", bet.second_user.id)
+      winner_point.total_points=winner_point.total_points + bet.amount.to_i * 2
+      winner_point.save
     end
     loser=Win.new( 
       bet_id: bet.id,

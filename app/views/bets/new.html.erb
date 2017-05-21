@@ -27,8 +27,10 @@
             <!-- <input type="text" name="second_user"> -->
             <select name="second_user">
               <% User.all.each do |user| %>
-              <option value="<%= user.name %>"><%= user.name if current_user.name != user.name  %></option>
+              <%if current_user.name !=user.name%> 
+              <option value="<%= user.name %>"> <%= user.name.capitalize%></option>
               <% end %>
+               <%end%>
             </select>
           </div>
           <div>
@@ -38,8 +40,10 @@
           <div> Who is your judge?
             <select name="master_judge">
               <% User.all.each do |user| %>
-              <option value="<%= user.name %>"><%= user.name if current_user.name != user.name  %></option>
+              <% if current_user.name != user.name%>
+              <option value="<%= user.name %>"><%= user.name.capitalize%></option>
               <% end %>
+              <%end%>
             </select>
           </div>
           <div> What are the terms of your bet?

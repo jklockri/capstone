@@ -47,8 +47,14 @@ class BetsController < ApplicationController
     @total_judge_rating= @ratings.inject(0){|sum,rating| sum += rating.judge_rating}
     @total_player_rating= @ratings.inject(0){|sum,rating| sum += rating.player_rating}
     @total_points= @points.inject(0){|sum,point| sum += point.total_points}
+puts "============"
+     @bets = @bets.flatten.sort_by!{|x| x[:created_at]}
+      @bets.each do |bet|
+        puts bet.created_at
+      end 
+      puts "==========================="
+    return @bets = @bets.flatten.sort_by!{|x| x[:created_at]}
 
-    return @bets = @bets.flatten
     
     render "index.html.erb"
   end 
@@ -135,6 +141,8 @@ class BetsController < ApplicationController
       @bets<<@bet2
     end
     @bets = @bets.flatten
+
+
     render "timeline.html.erb"
   end
 

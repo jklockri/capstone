@@ -1,4 +1,4 @@
-@points
+json.array! @points
 
  
 
