@@ -47,12 +47,12 @@ class BetsController < ApplicationController
     @total_judge_rating= @ratings.inject(0){|sum,rating| sum += rating.judge_rating}
     @total_player_rating= @ratings.inject(0){|sum,rating| sum += rating.player_rating}
     @total_points= @points.inject(0){|sum,point| sum += point.total_points}
-puts "============"
-     @bets = @bets.flatten.sort_by!{|x| x[:created_at]}
-      @bets.each do |bet|
-        puts bet.created_at
-      end 
-      puts "==========================="
+      # puts "==========================="
+      # @bets = @bets.flatten.sort_by!{|x| x[:created_at]}
+      # @bets.each do |bet|
+      #   puts bet.created_at
+      # end 
+      # puts "==========================="
     return @bets = @bets.flatten.sort_by!{|x| x[:created_at]}
 
     
@@ -78,6 +78,11 @@ puts "============"
     point = Point.find_by("user_id=?", current_user.id)
     point.total_points = point.total_points - params[:amount].to_i 
     point.save
+
+    other_point = Point.find_by("user_id=?", user2.id)
+    other_point.total_points = other_point.total_points - params[:amount].to_i
+    other_point.save
+
     redirect_to "/bets"
   end 
 
