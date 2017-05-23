@@ -39,6 +39,7 @@ gem 'simple_calendar'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem "chartkick"
+gem 'paypal-sdk-adaptiveaccounts'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
