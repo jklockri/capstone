@@ -53,137 +53,137 @@ class BetsController < ApplicationController
       #   puts bet.created_at
       # end 
       # puts "==========================="
-    return @bets = @bets.flatten.sort_by!{|x| x[:created_at]}
+      return @bets = @bets.flatten.sort_by!{|x| x[:created_at]}
 
-    
-    render "index.html.erb"
-  end 
 
-  def new
-    render "new.html.erb"
-  end 
+      render "index.html.erb"
+    end 
 
-  def create
-    user2 =  User.find_by(name: params[:second_user]) 
-    judge = User.find_by(name: params[:master_judge])
-    bet=Bet.new( 
-      user_1: current_user.id,
-      user_2: user2.id,
-      amount: params[:amount],
-      judge: judge.id,
-      terms: params[:terms]
-      )
-    bet.save
+    def new
+      render "new.html.erb"
+    end 
 
-    point = Point.find_by("user_id=?", current_user.id)
-    point.total_points = point.total_points - params[:amount].to_i 
-    point.save
+    def create
+      user2 =  User.find_by(name: params[:second_user]) 
+      judge = User.find_by(name: params[:master_judge])
+      bet=Bet.new( 
+        user_1: current_user.id,
+        user_2: user2.id,
+        amount: params[:amount],
+        judge: judge.id,
+        terms: params[:terms]
+        )
+      bet.save
 
-    other_point = Point.find_by("user_id=?", user2.id)
-    other_point.total_points = other_point.total_points - params[:amount].to_i
-    other_point.save
+      point = Point.find_by("user_id=?", current_user.id)
+      point.total_points = point.total_points - params[:amount].to_i 
+      point.save
 
-    redirect_to "/bets"
-  end 
+      other_point = Point.find_by("user_id=?", user2.id)
+      other_point.total_points = other_point.total_points - params[:amount].to_i
+      other_point.save
 
-  def show
-    @bet= Bet.find_by(id: params[:id])
-    render "show.html.erb"
-  end 
+      redirect_to "/bets"
+    end 
 
-  def edit
-    @bet= Bet.find_by(id: params[:id])
-    render "edit.html.erb"
-  end 
+    def show
+      @bet= Bet.find_by(id: params[:id])
+      render "show.html.erb"
+    end 
 
-  def update 
-    @bet= Bet.find_by(id: params[:id])
-    user2 =  User.find_by(name: params[:second_user]) 
-    judge = User.find_by(name: params[:master_judge])
-    @bet.update(
-      user_1: current_user.id,
-      user_2: user2.id,
-      amount: params[:amount],
-      judge: judge.id,
-      terms: params[:terms]
-      )
-    redirect_to "/bets"
-  end 
+    def edit
+      @bet= Bet.find_by(id: params[:id])
+      render "edit.html.erb"
+    end 
 
-  def destroy
-    @bet= Bet.find_by(id: params[:id])
-    @bet.destroy
-    redirect_to "/bets"
-  end 
+    def update 
+      @bet= Bet.find_by(id: params[:id])
+      user2 =  User.find_by(name: params[:second_user]) 
+      judge = User.find_by(name: params[:master_judge])
+      @bet.update(
+        user_1: current_user.id,
+        user_2: user2.id,
+        amount: params[:amount],
+        judge: judge.id,
+        terms: params[:terms]
+        )
+      redirect_to "/bets"
+    end 
 
-  def calendar 
-    render "calendar.html.erb"
-  end 
+    def destroy
+      @bet= Bet.find_by(id: params[:id])
+      @bet.destroy
+      redirect_to "/bets"
+    end 
 
-  def timeline
-    @user = current_user.id
-    @bets = []
-    
-    
-    if ((Bet.where(user_1: @user)) && Bet.where(user_1: @user) != nil)
-      @bet1 = Bet.where(user_1: @user).to_a
-      @bets << @bet1
+    def calendar 
+      render "calendar.html.erb"
+    end 
+
+    def timeline
+      @user = current_user.id
+      @bets = []
+
+
+      if ((Bet.where(user_1: @user)) && Bet.where(user_1: @user) != nil)
+        @bet1 = Bet.where(user_1: @user).to_a
+        @bets << @bet1
+      end
+      if ((Bet.where(user_2: @user)) && Bet.where(user_2: @user) != nil)
+        @bet2 = Bet.where(user_2: @user).to_a
+        @bets << @bet2
+      end
+      if ((Bet.where(judge: @user)) && Bet.where(judge: @user) != nil)
+        @bet3 = Bet.where(judge: @user).to_a
+        @bets << @bet3
+      end
+      @bets=@bets.flatten
+      if params[:type] == "judged"
+        @bets = Bet.where(judge: @user)
+      elsif params[:type]=="involved"
+        @bets=[]
+        @bets<<@bet1
+        @bets<<@bet2
+      end
+      @bets = @bets.flatten
+
+
+      render "timeline.html.erb"
     end
-    if ((Bet.where(user_2: @user)) && Bet.where(user_2: @user) != nil)
-      @bet2 = Bet.where(user_2: @user).to_a
-      @bets << @bet2
+
+    def points 
+      render "points.html.erb"
     end
-    if ((Bet.where(judge: @user)) && Bet.where(judge: @user) != nil)
-      @bet3 = Bet.where(judge: @user).to_a
-      @bets << @bet3
-    end
-    @bets=@bets.flatten
-    if params[:type] == "judged"
-      @bets = Bet.where(judge: @user)
-    elsif params[:type]=="involved"
-      @bets=[]
-      @bets<<@bet1
-      @bets<<@bet2
-    end
-    @bets = @bets.flatten
+
+    def graphs
+      @user = current_user.id
+      @bets = []
 
 
-    render "timeline.html.erb"
-  end
+      if ((Bet.where(user_1: @user)) && Bet.where(user_1: @user) != nil)
+        @bet1 = Bet.where(user_1: @user).to_a
+        @bets << @bet1
+      end
+      if ((Bet.where(user_2: @user)) && Bet.where(user_2: @user) != nil)
+        @bet2 = Bet.where(user_2: @user).to_a
+        @bets << @bet2
+      end
+      if ((Bet.where(judge: @user)) && Bet.where(judge: @user) != nil)
+        @bet3 = Bet.where(judge: @user).to_a
+        @bets << @bet3
+      end
+      @bets=@bets.flatten
+      if params[:type] == "judged"
+        @bets = Bet.where(judge: @user)
+      elsif params[:type]=="involved"
+        @bets=[]
+        @bets<<@bet1
+        @bets<<@bet2
+      end
+      @bets = @bets.flatten
 
-  def points 
-    render "points.html.erb"
-  end
-
-  def graphs
-    @user = current_user.id
-    @bets = []
-    
-    
-    if ((Bet.where(user_1: @user)) && Bet.where(user_1: @user) != nil)
-      @bet1 = Bet.where(user_1: @user).to_a
-      @bets << @bet1
-    end
-    if ((Bet.where(user_2: @user)) && Bet.where(user_2: @user) != nil)
-      @bet2 = Bet.where(user_2: @user).to_a
-      @bets << @bet2
-    end
-    if ((Bet.where(judge: @user)) && Bet.where(judge: @user) != nil)
-      @bet3 = Bet.where(judge: @user).to_a
-      @bets << @bet3
-    end
-    @bets=@bets.flatten
-    if params[:type] == "judged"
-      @bets = Bet.where(judge: @user)
-    elsif params[:type]=="involved"
-      @bets=[]
-      @bets<<@bet1
-      @bets<<@bet2
-    end
-    @bets = @bets.flatten
-
-    @x=@bets.map {|bet| bet.created_at}
-    @y=@bets.map {|bet| bet.amount}
+      @x=@bets.map {|bet| bet.created_at}
+      @y=@bets.map {|bet| bet.amount}
 
     # puts "==============================="
     # p @something = Bet.where("user_1=?", current_user).or(Bet.where("user_2=?",current_user)).group(:created_at).sum(:amount)
@@ -203,11 +203,6 @@ class BetsController < ApplicationController
         end
       end
     end
-
-    puts "==============================="
-    p @array
-    
-    puts "================================"
 
     render "graphs.html.erb"
   end 

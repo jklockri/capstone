@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       delete 'bets/:id' => 'bets#destroy'
       get '/total_profit_graph' => 'bets#total_profit_graph' 
       get '/events' => 'bets#events'
+      get 'player_vs_player' => 'bets#player_vs_player'
     end 
   end
 

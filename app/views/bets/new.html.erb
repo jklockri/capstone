@@ -23,21 +23,21 @@
       <div class="row">
         <div class="col-sm-12">
           <%= form_tag "/bets", method: :post do%> 
-          <div> Who are you betting?
+          <div> <h4>Who are you betting?</h4>
             <!-- <input type="text" name="second_user"> -->
             <select name="second_user">
               <% User.all.each do |user| %>
               <%if current_user.name !=user.name%> 
               <option value="<%= user.name %>"> <%= user.name.capitalize%></option>
               <% end %>
-               <%end%>
+              <%end%>
             </select>
           </div>
           <div>
-            How many points would you like to risk?
+            <h4>How many points would you like to risk?</h4>
             <input type="text" name="amount">
           </div>
-          <div> Who is your judge?
+          <div> <h4>Who is your judge?</h4>
             <select name="master_judge">
               <% User.all.each do |user| %>
               <% if current_user.name != user.name%>
@@ -46,10 +46,11 @@
               <%end%>
             </select>
           </div>
-          <div> What are the terms of your bet?
+          <div> <h4>What are the terms of your bet?</h4>
             <input type="text" name="terms">
           </div>
-          <input type="submit" name="submit">
+          <br>
+          <input class="btn btn-primary" type="submit" name="submit">
 
           <%end%>
         </div><!-- end col -->

@@ -74,16 +74,12 @@
     c3.generate({
       bindto: '#donut-chart',
       data: {
-        columns: [
-        ['Data1', 46],
-        ['Data2', 24],
-        ['Data3', 48],
-        ['Data4', 18]
-        ],
+        url: 'api/v1/player_vs_player',
+        mimeType: 'json',
         type : 'donut'
       },
       donut: {
-        title: "Candidates",
+        title: "Player vs Player",
         width: 40,
         label: {
           show:false
@@ -129,11 +125,8 @@
                 //width: 100 // this makes bar width 100px
               },
               data: {
-                columns: [
-                ['data1', 150, 80, 70, 152, 250, 95],
-                ['data2', 200, 130, 90, 240, 130, 220],
-                ['data3', 300, 200, 160, 400, 250, 250]
-                ],
+                url: '/api/v1/total_profit_graph',
+                mimeType: 'json',
                 type: 'bar',
                 colors: {
                   data1: '#8892d6',

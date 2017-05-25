@@ -6,16 +6,13 @@
             <div class="row">
               <div class="col-xs-12">
                 <div class="page-title-box">
-                    <h4 class="page-title">Starter Page</h4>
+                    <h4 class="page-title">Buy Points </h4>
                     <ol class="breadcrumb p-0 m-0">
-                        <li>
-                            <a href="#">Codefox</a>
-                        </li>
                         <li>
                             <a href="#">Pages</a>
                         </li>
                         <li class="active">
-                            Starter Page
+                            Buy Points
                         </li>
                     </ol>
                     <div class="clearfix"></div>
@@ -27,7 +24,7 @@
         
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 
-<div id="paypal-button-container"></div>
+
 
 <script>
 
@@ -85,16 +82,17 @@
         <%=form_tag "/points", method: :post do %>
         <div class="row">
             <div class="col-md-6">
-                <div class="">
+                <div class="card-box">
 
                     <form>
                         <div class="form-group">
-                            <p>How many points would you like?</p>
-                            <input  type="text" name="points" placeholder="10" >
+                            <input  class="form-control input-lg" type="text" name="points" placeholder="How many points would you like?" >
                         </div>
                         <div>
                             <input type="submit" name="submit">
                         </div>
+                        <br>
+                        <div id="paypal-button-container"></div>
 
 
                     </form>
@@ -106,15 +104,15 @@
         <%end%>
 
 
+
         <!-- end row -->
 
 
-    </div> <!-- container -->
+
+     </div><!-- container -->
 
 </div> <!-- content -->
 
-<footer class="footer text-right">
-    2016 - 2017 © Codefox. - Coderthemes.com
-</footer>
+
 
 </div>

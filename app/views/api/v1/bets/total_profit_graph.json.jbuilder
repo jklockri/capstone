@@ -1,4 +1,5 @@
-json.array! @points
+
+json.Amount @y
 
  
 

@@ -1,60 +1,60 @@
 <div id = "app">
-<div class="content-page">
-                <!-- Start content -->
-                <div class="content">
-                    <div class="container">
-                        <div class="row">
-              <div class="col-xs-12">
-                <div class="page-title-box">
-                                    <h4 class="page-title">Judge</h4>
-                                    <ol class="breadcrumb p-0 m-0">
-                                        <li>
-                                            <a href="#">Let's Bet</a>
-                                        </li>
-                                        <li class="active">
-                                            Judge
-                                        </li>
-                                    </ol>
-                                    <div class="clearfix"></div>
-                                </div>
-              </div>
+    <div class="content-page">
+        <!-- Start content -->
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="page-title-box">
+                        <h4 class="page-title">Judge</h4>
+                        <ol class="breadcrumb p-0 m-0">
+                            <li>
+                                <a href="#">Let's Bet</a>
+                            </li>
+                            <li class="active">
+                                Judge
+                            </li>
+                        </ol>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
             </div>
-                        <!-- end row -->
+            <!-- end row -->
 
-                        <div class="row">
-                            <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-12">
 
-                             <div class="row">
-                            <div class="col-md-6">
+                   <div class="row">
+                    <div class="col-md-6">
 
-                                <div class="card-box">
-                                    <h4 class="header-title m-t-0 m-b-20">Who won the bet?</h4>
+                        <div class="card-box">
+                            <h4 class="header-title m-t-0 m-b-20">Who won the bet?</h4>
 
-                                    
-                                    <%=form_tag "/judge/#{@bet.id}", method: :post do %>
-                                    <select class="form-control select2" name="winner" >
-                                     
-                                            <option value="<%=@bet.first_user.id%>"><%=@bet.first_user.name.capitalize %></option>
-                                            <option value="<%=@bet.second_user.id%>"><%=@bet.second_user.name.capitalize%></option>
-                                      
-                                        </select>
-                                       
-                              
-                                    
-                                   <input type="submit" name="Submit">
-                                   <%end%>
+                            
+                            <%=form_tag "/judge/#{@bet.id}", method: :post do %>
+                            <select class="form-control select2" name="winner" >
+                               
+                                <option value="<%=@bet.first_user.id%>"><%=@bet.first_user.name.capitalize %></option>
+                                <option value="<%=@bet.second_user.id%>"><%=@bet.second_user.name.capitalize%></option>
+                                
+                            </select>
+                            
+                            
+                            
+                            <input type="submit" name="Submit">
+                            <%end%>
 
-                            </div><!-- end col -->
-                        </div>
-                        <!-- end row -->
+                        </div><!-- end col -->
+                    </div>
+                    <!-- end row -->
 
 
-                    </div> <!-- container -->
+                </div> <!-- container -->
 
-                </div> <!-- content -->
-                </div>
-                </div>
-                </div>
-                </div>
-                </div>
-            
+            </div> <!-- content -->
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
