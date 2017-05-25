@@ -53,7 +53,7 @@ class BetsController < ApplicationController
       #   puts bet.created_at
       # end 
       # puts "==========================="
-      return @bets = @bets.flatten.sort_by!{|x| x[:created_at]}
+      @bets = @bets.flatten.sort_by!{|x| x[:created_at]}
 
 
       render "index.html.erb"

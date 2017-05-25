@@ -24,12 +24,8 @@ class Api::V1::BetsController < ApplicationController
       @bets=[]
       @bets<<@bet1
       @bets<<@bet2
-      
-      @bets = @bets.flatten.sort_by!{|x| x[:created_at]}.reverse
-      
-    return @bets 
     end
-    
+    @bets = @bets.flatten.sort_by!{|x| x[:created_at]}.reverse
     render "index.json.jbuilder"  
   end 
 
